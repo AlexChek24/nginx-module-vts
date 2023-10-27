@@ -127,6 +127,9 @@
     if (o->stat_2xx_counter > c->stat_2xx_counter) {                           \
         c->stat_2xx_counter_oc++;                                              \
     }                                                                          \
+    if (o->stat_204_counter > c->stat_204_counter) {                           \
+        c->stat_204_counter_oc++;                                              \
+    }                                                                          \
     if (o->stat_3xx_counter > c->stat_3xx_counter) {                           \
         c->stat_3xx_counter_oc++;                                              \
     }                                                                          \
