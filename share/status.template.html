@@ -653,7 +653,7 @@
                     if (cache) {
                         var i = 0;
                         for(var code in zone.responses) {
-                            if(i++ < 5) continue;
+                            if(i++ < 6) continue;
                             cacheCount = (zone.responses[code] + zone.overCounts['maxIntegerSize'] * zone.overCounts[code]);
                             cacheTotal += cacheCount;
                             s = '{}{}'.format(s, aHe('td', cacheCount));
