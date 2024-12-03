@@ -272,6 +272,7 @@ ngx_http_vhost_traffic_status_node_zero(ngx_http_vhost_traffic_status_node_t *vt
     vtsn->stat_out_bytes = 0;
     vtsn->stat_1xx_counter = 0;
     vtsn->stat_2xx_counter = 0;
+    vtsn->stat_204_counter = 0;
     vtsn->stat_3xx_counter = 0;
     vtsn->stat_4xx_counter = 0;
     vtsn->stat_5xx_counter = 0;
@@ -286,6 +287,7 @@ ngx_http_vhost_traffic_status_node_zero(ngx_http_vhost_traffic_status_node_t *vt
     vtsn->stat_out_bytes_oc = 0;
     vtsn->stat_1xx_counter_oc = 0;
     vtsn->stat_2xx_counter_oc = 0;
+    vtsn->stat_204_counter_oc = 0;
     vtsn->stat_3xx_counter_oc = 0;
     vtsn->stat_4xx_counter_oc = 0;
     vtsn->stat_5xx_counter_oc = 0;
