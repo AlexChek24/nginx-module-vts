@@ -531,7 +531,7 @@
                 }
 
                 heads[1] = aHe('th', ['Total', 'Req/s', 'Time', '1xx', '2xx', '204', '3xx', '4xx', '5xx',
-                                      'Total', 'Sent', 'Rcvd', 'Sent/s', 'Rcvd/s']);
+                    'Total', 'Sent', 'Rcvd', 'Sent/s', 'Rcvd/s']);
 
                 if (cache) {
                     heads[1] = '{}{}'.format(heads[1], aHe('th', ['Miss', 'Bypass', 'Expired', 'Stale',
@@ -556,7 +556,7 @@
                                                        aHe('th colspan="4"', 'Traffic'));
 
                 heads[1] = aHe('th', ['Total', 'Req/s', 'Time', '1xx', '2xx', '204', '3xx', '4xx', '5xx',
-                                      'Total', 'Sent', 'Rcvd', 'Sent/s', 'Rcvd/s']);
+                    'Total', 'Sent', 'Rcvd', 'Sent/s', 'Rcvd/s']);
 
                 return aHe('thead', '{}{}'.format(aHe('tr', heads[0]), aHe('tr', heads[1])));
             }
@@ -635,12 +635,16 @@
                                       aHe('td', [(zone.requestCounter + zone.overCounts['maxIntegerSize'] * zone.overCounts['requestCounter']),
                                                  aPs.getValue('{}.{}'.format(uniq, 'requestCounter'), zone.requestCounter), mTh(zone.requestMsec)
                                                 ]));
+                    var responseOrder = ['1xx', '2xx', '204', '3xx', '4xx', '5xx'];
 
-                    for(var code in zone.responses) {
-                        responseCount = zone.responses[code] + zone.overCounts['maxIntegerSize'] * zone.overCounts[code];
-                        responseTotal += responseCount;
-                        s = '{}{}'.format(s, aHe('td', responseCount));
-                        if(code == '5xx') break;
+                    for (var i = 0; i < responseOrder.length; i++) {
+                        var code = responseOrder[i];
+                        if (zone.responses.hasOwnProperty(code)) {
+                            responseCount = zone.responses[code] + zone.overCounts['maxIntegerSize'] * zone.overCounts[code];
+                            responseTotal += responseCount;
+                            s = '{}{}'.format(s, aHe('td', responseCount));
+                        }
+                        if (code == '5xx') break; // чтобы не выходить за границы
                     }
 
                     s = '{}{}'.format(s, aHe('td', [responseTotal,
